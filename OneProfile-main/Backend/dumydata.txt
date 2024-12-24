@@ -1,0 +1,11 @@
+{
+    "name":"ayush",
+    "opusername":"harendraseervi",
+    "email":"ayushkumar@gmail.com",
+    "password":"ayush54321",
+    "cf":"ayushcf",   
+    "cc":"ayushcc",
+    "sp":"ayushsp",
+    "at":"ayushat",
+    "hr":"ayushhr"
+}

@@ -1,0 +1,19 @@
+.rating-dashboard{
+    /* display: flex;
+    justify-content: center; */
+    text-align: center;
+}
+.rating-heading{
+    padding: 15px;
+    color: #0048ffe6;
+    display: flex;
+    flex-direction: row;
+}
+.row-table{
+    cursor: pointer;
+    /* background-color: yellow; */
+}
+
+.row-table:hover{
+    background-color: blue;
+}
