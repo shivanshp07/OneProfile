@@ -5,6 +5,7 @@ import HomeIcon from '@mui/icons-material/Home';
 import LeaderboardRoundedIcon from '@mui/icons-material/LeaderboardRounded';
 import NotificationsActiveRoundedIcon from '@mui/icons-material/NotificationsActiveRounded';
 import TrendingUpRoundedIcon from '@mui/icons-material/TrendingUpRounded';
+import { Message } from '@mui/icons-material';
 import * as React from 'react';
 import Button from '@mui/material/Button';
 import Dialog from '@mui/material/Dialog';
@@ -85,6 +86,10 @@ function NavBar() {
       console.log("fasdfs");
       navigate(`/profile/${getUserOpname()}`)
     }
+    else if (val == 9) {
+      setActClass(9);
+      navigate('/messaging')
+    }
   }
 
   function getUserOpname() {
@@ -116,7 +121,7 @@ function NavBar() {
           <li className='li-icon-bottom'>ProblemSet</li>
         </div>
         <div onClick={() => { setActiveNavbar(9) }} className={`Nav-tag ${actClass === 9 ? "active" : null}`}>
-          <TrendingUpRoundedIcon className='icon-nav' ></TrendingUpRoundedIcon>
+          <Message className='icon-nav' ></Message>
           <li className='li-icon-bottom'>Messaging</li>
         </div>
       </ul>

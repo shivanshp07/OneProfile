@@ -43,10 +43,11 @@ function ProblemSet() {
         let data = await response.json();
         let str = localStorage.getItem('username');
         const userName = str ? str.substring(1, str.length - 1) : '';
+        console.log(data);
 
         const updatedArray = data.map((element) => {
             const isChecked = element.status.includes(userName);
-            return { ...element, checked: isChecked, key: element._id };
+            return { ...element, checked: isChecked, key: element.id };
         });
 
         let count = 0;
@@ -139,7 +140,8 @@ function ProblemSet() {
     };
 
     function solveClicked(row) {
-        window.open(row.link);
+        console.log(row)
+        window.open(row.link.url);
     }
 
     function noteClicked(row) {

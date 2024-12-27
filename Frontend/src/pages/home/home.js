@@ -70,7 +70,6 @@ function HomePage() {
         setSuccess(false);
         setLoading(true);
         handlePost();
-
     };
 
     const buttonSx = {
@@ -90,8 +89,8 @@ function HomePage() {
         let posts = await fetch("http://localhost:5000/blog", {
             method: 'GET'
         });
+        console.log(posts);
         posts = await posts.json();
-        // console.log(posts);
         setBlogLoading(false);
         setAllBlog(posts);
     }

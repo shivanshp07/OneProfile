@@ -14,6 +14,25 @@ const cron = require('node-cron');
 const morgan = require('morgan');
 const jwtKey = process.env.JWT_PASS;
 const blogModel = require('./db/blog');
+const { createServer } = require("http");
+const { Server } = require("socket.io");
+
+const httpServer = createServer(app);
+const io = new Server(httpServer, {
+    cors: {
+        origin: "http://localhost:3000",
+    },
+});
+
+io.on("connection", (socket) => {
+    console.log(`User connected: ${socket.id}`);
+
+    socket.on("send_message", (data) => {
+        console.log(data);
+        socket.broadcast.emit("receive_message", data);
+    });
+});
+
 
 app.use(cors({ origin: 'http://localhost:3000', credentials: true }));
 app.use(express.json({ limit: '50mb' }));
@@ -304,7 +323,7 @@ app.post('/problemset/postproblem', async (req, res) => {
 })
 app.get('/problemset', async (req, res) => {
     let ps = await problemset.find({});
-    // console.log("Ps", ps);
+    console.log("Ps", ps);
     res.send(ps);
 })
 
@@ -317,7 +336,9 @@ app.get('/blog', async (req, res) => {
         const newList = [];
 
         for (const blog of blogList) {
+            console.log(blog);
             const user = await User.findById(blog.userid);
+            console.log(user);
             newList.push({ ...blog._doc, name: user.name });
         }
 
@@ -417,7 +438,11 @@ app.post('/problemset/changestatus', async (req, res) => {
         res.send(false);
     }
 
-})
-app.listen(5000, () => {
-    console.log("Server up and running on port: 5000");
-})
+});
+
+httpServer.listen(5000, () => {
+    console.log("Server is running!");
+});
+// app.listen(5000, () => {
+//     console.log("Server up and running on port: 5000");
+// })

@@ -176,6 +176,7 @@ function Profile() {
   async function getUserData(userName) {
     let userInfo = await fetch(`http://localhost:5000/profile/${userName}`);
     userInfo = await userInfo.json();
+    console.log(userInfo);
     userInfo = userInfo[0];
     setName(userInfo.name);
     setEmail(userInfo.email);
@@ -300,17 +301,17 @@ function Profile() {
             />
           </div>
         </div>
-        <div className='heatmap-componet'>
+        {/* <div className='heatmap-componet'>
           <h1 className='higherst-rating-heading'>HeatMap</h1>
           {isLoading ? (
             <>
-              {/* <Heatmap />
-              <Heatmap /> */}
+              <Heatmap />
+              <Heatmap />
             </>
           ) : (
             <div>Loading...</div>
           )}
-        </div>
+        </div> */}
       </div>
     </div>
   );

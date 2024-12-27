@@ -7,7 +7,9 @@ const problemsetSchema=new mongoose.Schema({
     difficulty:String,
     platform:String,
     companytag:String,
-    link:{type:String,index:true},
+    link: {
+        url: String,
+    },
     status:[{}],
 });
 
